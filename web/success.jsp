@@ -3,13 +3,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>TOBA</title>
+        <title>Welcome New User</title>
         <link rel="stylesheet" href="styles/main.css" type="text/css"/>
     </head>
     <body>
-    <form action="" method="post">
-        <input type="hidden" name="action" value="join">
-        <input type="submit" value="Return">
-    </form>
+        <img src="images/header.jpg" alt="logo" width ="800">
+        <br>
+        <h1>Welcome to TOBA Online Banking!</h1>
+        <h2>Your account was successfully created.</h2>
+        <form action="login.jsp">
+            <input type="submit" value="Back">
+        </form>
     </body>
 </html>

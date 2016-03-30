@@ -9,28 +9,14 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import users.User;
-
 public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/new_customer.html";
-        
-        // get current action
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "join";  // default action
-        }
-
-        // perform action and set URL to appropriate page
-        if (action.equals("join")) {
-            url = "/new_customer.jsp";    // the "join" page
-        } 
-        else if (action.equals("add")) {
-            // get parameters from the request
+                
+            String url = "/login.jsp";
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
@@ -38,14 +24,14 @@ public class LoginServlet extends HttpServlet {
             String message;
             if (username.equals("jsmith@toba.com") && password.equals("letmein")) {
                 message = "";
-                url = "/account_activity.html";
+                url = "/account_activity.jsp";
             } 
             else {
                 message = "";
                 url = "/login_failure.jsp";
             }
             request.setAttribute("message", message);
-        }
+        
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);

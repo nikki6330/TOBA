@@ -11,7 +11,7 @@
         <img src="images/header.jpg" alt="logo" width ="800">
         <br>
         <h2>Login</h2>
-        <form action="Login" method="post" accept-charset="utf-8">
+        <form action="Login" method="post">
         <label>Username</label>
         <input type="text" name="username" value="${user.username}"><br>
         <label>Password</label>

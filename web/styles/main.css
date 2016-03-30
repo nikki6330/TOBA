@@ -3,7 +3,6 @@ body {
     font-size: 85%;
     margin-left: 2em;
     margin-right: 2em;
-    width: 400px;
 }   
 h2 {     
     font-size: 120%;
@@ -38,4 +37,7 @@ br {
 }
 .margin_far_left {
     margin-left: 6em;
+}
+.back {
+    margin-left: 20em;
 }

@@ -4,9 +4,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-import users.User;
-
-
 public class NewCustomerServlet extends HttpServlet {
 
   @Override
@@ -40,9 +37,7 @@ public class NewCustomerServlet extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             
-                    // store data in User object
-            User user = new User(firstName, lastName, phoneNumber, address,
-                    city, state, zip, email, username, password);
+                    
 
             // validate the parameters
             String message;
@@ -52,14 +47,13 @@ public class NewCustomerServlet extends HttpServlet {
                 firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() ||
                 address.isEmpty() || city.isEmpty() || state.isEmpty() || zip.isEmpty() ||
                 email.isEmpty() || username.isEmpty() || password.isEmpty()) {
-                message = "Please fill out all form fields.";
+                message = "*Please fill out all form fields*";
                 url = "/new_customer.jsp";
             }
             else {
                 message = "";
                 url = "/success.jsp";
             }
-            request.setAttribute("user", user);
             request.setAttribute("message", message);
         }
         getServletContext()

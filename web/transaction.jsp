@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>Transaction</title>
         <link rel="stylesheet" href="styles/main.css" type="text/css"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,6 @@
     <body>
         <img src="images/header.jpg" alt="logo" width ="800">
         <br>
-        <br>
-        <a href="login.jsp">Login</a> |
-        <a href="account_activity.jsp">Account Activity</a> |
-        <a href="transaction.jsp">Transaction</a>
+        <h2>Transaction</h2>
     </body>
 </html>
-

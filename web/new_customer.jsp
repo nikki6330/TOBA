@@ -11,7 +11,7 @@
         <img src="images/header.jpg" alt="logo" width ="800">
         <br>
         <h2>New User Registration</h2>
-        <p>${message}</p>
+        <p style="color: #df2323">${message}</p>
         <form action="NewCustomer" method="post">
             <input type="hidden" name="action" value="add">
             <label>First Name</label>
@@ -36,6 +36,7 @@
             <input type="text" name="password" value="${user.password}"><br>
             <label>&nbsp;</label>
             <input type="submit" value="Submit" class="margin_left">
+            <a href="login.jsp" class="margin_left">Already a user?</a>
         </form>
     </body>
 </html>
