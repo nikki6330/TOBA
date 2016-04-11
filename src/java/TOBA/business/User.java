@@ -93,7 +93,7 @@ public class User implements Serializable {
     }
     
     public String getZip() {
-        return lastName;
+        return zip;
     }
 
     public void setZip(String zip) {
