@@ -7,7 +7,7 @@
     <h2>Reset Password</h2>
     <form action="NewPassword" method="post">
         <input type="hidden" name="action" value="change">
-        <label>New Password:</label>
+        <label>New Password</label>
         <input type="text" name="password" value="${user.password}" required><br>
         <label>&nbsp;</label>
         <input type="submit" value="Change" class="margin_left">

@@ -29,8 +29,9 @@
         <label>Password:</label>
         <span>${user.password}</span><br>
         
-        <form action="account_activity.jsp">
-            <input type="submit" value="Account">
+        <form action="login.jsp">
+            <label>&nbsp;</label>
+            <input type="submit" value="Login" class="margin_left">
         </form>
     
 <c:import url="/includes/footer.jsp" />
