@@ -1,25 +1,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login to TOBA</title>
-        <link rel="stylesheet" href="styles/main.css" type="text/css"/>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <img src="images/header.jpg" alt="logo" width ="800">
-        <br>
-        <h2>Login</h2>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/includes/header.html" />
+    <img src="images/header.jpg" alt="logo" width ="800">
+    <br>
+    
+    <h2>Login</h2>
         <form action="Login" method="post">
-        <label>Username</label>
-        <input type="text" name="username" value="${user.username}"><br>
-        <label>Password</label>
-        <input type="text" name="password" value="${user.password}"><br>
-        <label>&nbsp;</label>
-        <input type="submit" value="Login" class="margin_left">
-        <a href="new_customer.jsp" class="margin_far_left">New User?</a>        
+            <label>Username</label>
+            <input type="text" name="username" value="${user.username}" required><br>
+            <label>Password</label>
+            <input type="text" name="password" value="${user.password}" required><br>
+            <label>&nbsp;</label>
+            <a href="new_customer.jsp" class="margin_left">New User?</a>
+            <a href="password_reset.jsp" class="margin_left">Reset Password</a><br> 
+            <label>&nbsp;</label>
+            <input type="submit" value="Login" class="margin_left">
         </form>
-    </body>
-</html>
+        
+<c:import url="/includes/footer.jsp" />
 

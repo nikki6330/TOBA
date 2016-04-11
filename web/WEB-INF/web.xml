@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>users.LoginServlet</servlet-class>
@@ -11,6 +14,10 @@
             <param-name>relativePathToFile</param-name>
             <param-value>/WEB-INF/NewCustomer.txt</param-value>
         </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPasswordServlet</servlet-name>
+        <servlet-class>users.NewPasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TransactionServlet</servlet-name>
@@ -31,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>NewCustomerServlet</servlet-name>
         <url-pattern>/NewCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPasswordServlet</servlet-name>
+        <url-pattern>/NewPassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
