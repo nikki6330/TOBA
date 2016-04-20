@@ -1,11 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/includes/header.html" />
-    <img src="images/header.jpg" alt="logo" width ="800">
-    <br>
-    
+   
     <h2>Login</h2>
         <form action="Login" method="post">
+            <input type="hidden" name="action" value="login">
             <label>Username</label>
             <input type="text" name="username" value="${user.username}" required><br>
             <label>Password</label>

@@ -15,8 +15,6 @@ public class NewCustomerServlet extends HttpServlet {
         
         String url = "/new_customer.jsp";
          
-        
-         
         // get current action
         String action = request.getParameter("action");
         if (action == null) {
@@ -26,6 +24,16 @@ public class NewCustomerServlet extends HttpServlet {
          // perform action and set URL to appropriate page
         if (action.equals("join")) {
             url = "/new_customer.jsp";    // the "join" page
+        }
+        
+        if (action.equals("change")) {
+            String password = request.getParameter("password");
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            user.setPassword(password);
+            session.setAttribute("user", user);
+            
+            url = "/account_activity.jsp";
         }
         
         if (action.equals("add")) {
@@ -38,14 +46,12 @@ public class NewCustomerServlet extends HttpServlet {
             String state = request.getParameter("state");
             String zip = request.getParameter("zip");
             String email = request.getParameter("email");
-            String username = lastName+zip;
-            String password = "welcome1";
             
             HttpSession session = request.getSession();
             
             // store data in User object
             User user = new User(firstName, lastName, phoneNumber, address, city, 
-                    state, zip, email, username, password); 
+                    state, zip, email); 
             
             // validate the parameters
             String message;
@@ -63,7 +69,6 @@ public class NewCustomerServlet extends HttpServlet {
                 url = "/success.jsp";
             }
             session.setAttribute("user", user);
-            request.setAttribute("user", user);
             request.setAttribute("message", message);
         }
         

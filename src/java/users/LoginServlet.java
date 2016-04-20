@@ -14,6 +14,16 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
                 
             String url = "/login.jsp";
+            String message;
+            // get current action
+            String action = request.getParameter("action");
+            
+            if (action.equals("goToLogin")) {
+                url = "/login.jsp";
+            }
+            
+            if (action.equals("login")) {
+        
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             
@@ -21,7 +31,6 @@ public class LoginServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
 
             // validate the parameters
-            String message;
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                 message = "";
                 url = "/account_activity.jsp";
@@ -31,6 +40,16 @@ public class LoginServlet extends HttpServlet {
                 url = "/login_failure.jsp";
             }
             request.setAttribute("message", message);
+            
+            }
+            
+            if (action.equals("account")) {
+                url = "/account_activity.jsp";
+            }
+            
+            else if (action.equals("transaction")) {
+                url = "/transaction.jsp";
+            }
         
         getServletContext()
                 .getRequestDispatcher(url)

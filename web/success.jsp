@@ -1,8 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/includes/header.html" />
-    <img src="images/header.jpg" alt="logo" width ="800">
-    <br>
     
     <h1>Welcome to TOBA Online Banking!</h1>
     <h2>Your account was successfully created.</h2>
