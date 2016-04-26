@@ -5,6 +5,9 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 import TOBA.business.User;
+import TOBA.data.UserDB;
+import TOBA.business.Account;
+import TOBA.data.AccountDB;
 
 public class NewCustomerServlet extends HttpServlet {
 
@@ -31,6 +34,7 @@ public class NewCustomerServlet extends HttpServlet {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             user.setPassword(password);
+            UserDB.update(user);
             session.setAttribute("user", user);
             
             url = "/account_activity.jsp";
@@ -50,8 +54,13 @@ public class NewCustomerServlet extends HttpServlet {
             HttpSession session = request.getSession();
             
             // store data in User object
-            User user = new User(firstName, lastName, phoneNumber, address, city, 
-                    state, zip, email); 
+            User user = new User(firstName, lastName, phoneNumber, address, city,
+            state, zip, email);
+            
+            double balance = 25.00;
+            double checking = 0.00;
+            
+            Account account = new Account(user, balance, checking);
             
             // validate the parameters
             String message;
@@ -64,11 +73,19 @@ public class NewCustomerServlet extends HttpServlet {
                 message = "*Please fill out all form fields*";
                 url = "/new_customer.jsp";
             }
+            else if (UserDB.emailExists(user.getEmail())) {
+                message = "This email address already exists.<br>" +
+                          "Please enter another email address.";
+                url = "/new_customer.jsp";
+            }
             else {
                 message = "";
+                UserDB.insert(user);
+                AccountDB.insert(account);
                 url = "/success.jsp";
             }
             session.setAttribute("user", user);
+            session.setAttribute("account", account);
             request.setAttribute("message", message);
         }
         

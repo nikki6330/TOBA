@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import TOBA.business.User;
+import TOBA.data.UserDB;
 
 public class LoginServlet extends HttpServlet {
 
@@ -26,10 +27,11 @@ public class LoginServlet extends HttpServlet {
         
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            UserDB.selectUser(username);
             
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-
+            
             // validate the parameters
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                 message = "";
