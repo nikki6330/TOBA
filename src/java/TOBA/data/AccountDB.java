@@ -10,12 +10,12 @@ public class AccountDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO Account (Balance, Checking) "
+                = "INSERT INTO Account (Checking, Savings) "
                 + "VALUES (?, ?)";
         try {
             ps = connection.prepareStatement(query);
-            ps.setDouble(1, account.getBalance());
             ps.setDouble(2, account.getChecking());
+            ps.setDouble(3, account.getSavings());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

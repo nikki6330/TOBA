@@ -6,20 +6,21 @@ public class Account implements Serializable{
    
     private double balance;
     private double checking;
+    private double savings;
     private Object user;
     
-    public Account(Object user, Double balance, Double checking){
-        this.balance = balance;
+    public Account(Object user, Double checking, Double savings){
         this.checking = checking;
+        this.savings = savings;
         this.user = user;
     }
      
-    public static void credit() {
-        
+    public double credit(Double balance, Double amount) {
+        return balance + amount;
     }
     
-    public static void debit() {
-        
+    public double debit(Double balance, Double amount) {
+        return balance - amount;
     }
     
     public Object getUser() {
@@ -44,5 +45,13 @@ public class Account implements Serializable{
 
     public void setChecking(double checking) {
         this.checking = checking;
+    }
+    
+    public double getSavings() {
+        return savings;
+    }
+
+    public void setSavings(double savings) {
+        this.savings = savings;
     }
 }

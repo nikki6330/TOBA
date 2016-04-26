@@ -57,10 +57,10 @@ public class NewCustomerServlet extends HttpServlet {
             User user = new User(firstName, lastName, phoneNumber, address, city,
             state, zip, email);
             
-            double balance = 25.00;
+            double savings = 25.00;
             double checking = 0.00;
             
-            Account account = new Account(user, balance, checking);
+            Account account = new Account(user, checking, savings);
             
             // validate the parameters
             String message;
