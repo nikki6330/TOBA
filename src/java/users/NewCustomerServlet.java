@@ -81,7 +81,8 @@ public class NewCustomerServlet extends HttpServlet {
             else {
                 message = "";
                 UserDB.insert(user);
-                AccountDB.insert(account);
+                AccountDB.insertChecking(account);
+                AccountDB.insertSavings(account);
                 url = "/success.jsp";
             }
             session.setAttribute("user", user);
