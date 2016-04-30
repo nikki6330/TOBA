@@ -1,57 +1,74 @@
 package TOBA.business;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import TOBA.business.User;
+import java.util.ArrayList;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Account implements Serializable{
    
+    public enum AccountType { CHECKING, SAVINGS} 
+    
+    @Id
+    @Column (name="ACCOUNT_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long accountId;
+    
+    @Column (name="ACCOUNT_TYPE")
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
+        
+    @Column (name="BALANCE")
     private double balance;
-    private double checking;
-    private double savings;
-    private Object user;
     
-    public Account(Object user, Double checking, Double savings){
-        this.checking = checking;
-        this.savings = savings;
-        this.user = user;
-    }
-     
-    public double credit(Double balance, Double amount) {
-        return balance + amount;
+    /*@OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    private ArrayList<Transaction> transactions;*/
+    
+    public Account() {
+    
     }
     
-    public double debit(Double balance, Double amount) {
-        return balance - amount;
+    public Account(double balance, AccountType typeOfAccount){
+        this.balance = balance;
+        this.accountType = typeOfAccount;
+    }    
+    
+    public long getAccountId() {
+        return accountId;
     }
     
-    public Object getUser() {
-        return user;
-    }
-
-    public void setUser(Object user) {
-        this.user = user;
+    public void setAccountId(long accountId){
+        this.accountId = accountId;
     }
     
+    public AccountType getAccountType() {
+        return accountType;
+    }
+        
     public double getBalance() {
         return balance;
     }
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    public double getChecking() {
-        return checking;
-    }
-
-    public void setChecking(double checking) {
-        this.checking = checking;
+    } 
+    
+    public void credit(double amount) {
+        this.balance += amount;
     }
     
-    public double getSavings() {
-        return savings;
-    }
-
-    public void setSavings(double savings) {
-        this.savings = savings;
+    public void debit(double amount) {
+        this.balance -= amount;
     }
 }

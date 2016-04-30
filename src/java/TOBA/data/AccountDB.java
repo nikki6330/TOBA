@@ -1,50 +1,40 @@
 package TOBA.data;
 
-import java.sql.*;
 import TOBA.business.Account;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 public class AccountDB {
-    public static int insertChecking(Account account) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-
-        String query
-                = "INSERT INTO Account (AccountTypeID, StartingBalance) "
-                + "VALUES (?, ?)";
+    public static void insert(Account account) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();        
         try {
-            ps = connection.prepareStatement(query);
-            ps.setDouble(1, 1);
-            ps.setDouble(2, account.getChecking());
-            return ps.executeUpdate();
-        } catch (SQLException e) {
+            em.persist(account);
+            trans.commit();
+        } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            trans.rollback();
         } finally {
-            DBUtil.closePreparedStatement(ps);
-            pool.freeConnection(connection);
+            em.close();
         }
     }
     
-    public static int insertSavings(Account account) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-
-        String query
-                = "INSERT INTO Account (StartingBalance) "
-                + "VALUES (?, ?)";
+     public static Account selectAccount(String accountType) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM account u " +
+                "WHERE u.ACCOUNT_TYPE = :accountType";
+        TypedQuery<Account> q = em.createQuery(qString, Account.class);
+        q.setParameter("accountType", accountType);
         try {
-            ps = connection.prepareStatement(query);
-            ps.setDouble(1, 1);
-            ps.setDouble(2, account.getSavings());
-            return ps.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e);
-            return 0;
+            Account account = q.getSingleResult();
+            return account;
+        } catch (NoResultException e) {
+            return null;
         } finally {
-            DBUtil.closePreparedStatement(ps);
-            pool.freeConnection(connection);
+            em.close();
         }
     }
 }

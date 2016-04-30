@@ -57,11 +57,6 @@ public class NewCustomerServlet extends HttpServlet {
             User user = new User(firstName, lastName, phoneNumber, address, city,
             state, zip, email);
             
-            double savings = 25.00;
-            double checking = 0.00;
-            
-            Account account = new Account(user, checking, savings);
-            
             // validate the parameters
             String message;
             if (firstName == null || lastName == null || phoneNumber == null || 
@@ -73,20 +68,17 @@ public class NewCustomerServlet extends HttpServlet {
                 message = "*Please fill out all form fields*";
                 url = "/new_customer.jsp";
             }
-            else if (UserDB.emailExists(user.getEmail())) {
+            /*else if (UserDB.emailExists(user.getEmail())) {
                 message = "This email address already exists.<br>" +
                           "Please enter another email address.";
-                url = "/new_customer.jsp";
-            }
+                url = "/new_customer.jsp"; 
+            }*/
             else {
                 message = "";
                 UserDB.insert(user);
-                AccountDB.insertChecking(account);
-                AccountDB.insertSavings(account);
                 url = "/success.jsp";
             }
             session.setAttribute("user", user);
-            session.setAttribute("account", account);
             request.setAttribute("message", message);
         }
         

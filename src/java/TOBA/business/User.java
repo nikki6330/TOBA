@@ -1,36 +1,56 @@
-
 package TOBA.business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import TOBA.business.Account;
 
+@Entity
 public class User implements Serializable {
     
+    @Id
+    @Column (name="USER_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long userId;
+    
+    @Column (name="FIRST_NAME")
     private String firstName;
+    @Column (name="LAST_NAME")
     private String lastName;
+    @Column (name="PHONE_NUMBER")
     private String phoneNumber;
+    @Column (name="ADDRESS")
     private String address;
+    @Column (name="CITY")
     private String city;
+    @Column (name="STATE")
     private String state;
+    @Column (name="ZIP_CODE")
     private String zip;
+    @Column (name="EMAIL")
     private String email;
+    @Column (name="USER_NAME")
     private String username;
+    @Column (name="PASSWORD")
     private String password;
     
+    @OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    private ArrayList<Account> accounts;
+    
     public User(){
-        this.firstName = "";
-        this.lastName = "";
-        this.phoneNumber = "";
-        this.address = "";
-        this.city = "";
-        this.state = "";
-        this.zip = "";
-        this.email = "";
-        this.username = "";
-        this.password = "";
+        
     }
-
+    
     public User(String firstName, String lastName, String phoneNumber, 
             String address, String city, String state, String zip, String email) {
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -41,8 +61,19 @@ public class User implements Serializable {
         this.email = email;
         this.username = lastName + zip;
         this.password = "welcome1";
+        this.accounts = new ArrayList<Account>();
+        this.accounts.add(new Account(25.00, Account.AccountType.SAVINGS));
+        this.accounts.add(new Account(0.00, Account.AccountType.CHECKING));
     }
-
+    
+    public long getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+    
     public String getFirstName() {
         return firstName;
     }
@@ -121,6 +152,32 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }    
+  
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }    
+
+    public void setAccounts(ArrayList<Account> accounts) {
+        this.accounts = accounts;
     }
     
+    public Account getAccount(Account.AccountType which) {
+        for (Account a: this.accounts){
+            if (a.getAccountType() == which){
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public double getCheckingBalance(){
+        Account checking = getAccount(Account.AccountType.CHECKING);
+        return checking.getBalance();
+    }
+    
+    public double getSavingsBalance(){
+        Account savings = getAccount(Account.AccountType.SAVINGS);
+        return savings.getBalance();
+    }
 }
