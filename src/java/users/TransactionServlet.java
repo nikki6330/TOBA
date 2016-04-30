@@ -49,7 +49,7 @@ public class TransactionServlet extends HttpServlet {
                          //Run debit method
                          Account.debit(amount);
                      }
-                     // Determin if second account is 
+                     // Determine if second account is 
                      if (account_type_2 == Account.AccountType.CHECKING) {
                          //Run credit method
                          Account.credit(amount);
