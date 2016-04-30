@@ -30,6 +30,8 @@ public class Transaction implements Serializable{
     @Column (name="AMOUNT_TRANSFERRED")
     private double amount;
     
+    private ArrayList<Transaction> transactions;
+    
     public Transaction() {
     
     }
@@ -63,4 +65,13 @@ public class Transaction implements Serializable{
     public void setAmount(double amount){
         this.amount = amount;
     }
+    
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }    
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+    
 }
