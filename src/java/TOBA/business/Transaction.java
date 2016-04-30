@@ -27,19 +27,40 @@ public class Transaction implements Serializable{
     private double account_1;    
     @Column (name="ACCOUNT_2")
     private double account_2;        
-    @Column (name="TRANSFER_AMMOUNT")
-    private double ammount;
+    @Column (name="AMOUNT_TRANSFERRED")
+    private double amount;
     
     public Transaction() {
     
     }
     
-    public Transaction(double account_1, double account_2, double ammount){
+    public Transaction(double account_1, double account_2, double amount){
         this.account_1 = account_1;
         this.account_2 = account_2;
-        this.ammount = ammount;
+        this.amount = amount;
     }
     
+    public double getAccount1(){
+        return account_1;
+    }
     
+    public void setAccount1(double account_1){
+        this.account_1 = account_1;
+    }
     
+    public double getAccount2(){
+        return account_2;
+    }
+    
+    public void setAccount2(double account_2){
+        this.account_2 = account_2;
+    }
+    
+    public double getAmount(){
+        return amount;
+    }
+    
+    public void setAmount(double amount){
+        this.amount = amount;
+    }
 }
