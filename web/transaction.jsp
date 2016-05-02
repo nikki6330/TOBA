@@ -14,13 +14,13 @@
             <input type="hidden" name="action" value="transfer">
             <label>From:</label>
             <select name="account_1" class="margin_left">
-                <option value="${user.getSavingsBalance()}" selected>Savings</option>
-                <option value="${user.getCheckingBalance()}">Checking</option> 
+                <option value="${savings}" selected>Savings</option>
+                <option value="${checking}">Checking</option> 
             </select><br>
             <label>To:</label>
             <select name="account_2" class="margin_left">
-                <option value="${user.getSavingsBalance()}" >Savings</option>
-                <option value="${user.getCheckingBalance()}" selected>Checking</option> 
+                <option value="${savings}" >Savings</option>
+                <option value="${checking}" selected>Checking</option> 
             </select><br>
             <label>Transfer Amount</label>
             <input type="text" name="amount" value="${account.amount}"><br>

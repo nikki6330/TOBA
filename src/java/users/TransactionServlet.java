@@ -14,20 +14,22 @@ public class TransactionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-                
+                /*
             String url = "/transaction.jsp";
             String message;
             // get current action
             String action = request.getParameter("action");
                         
             if (action.equals("transfer")) {
-                String account_type_1 = request.getParameter("account_1");
-                String account_type_2 = request.getParameter("account_2");
+                Account from = request.getParameter("from");
+                Object account_1 = request.getSession().getAttribute(from);
+                request.getSession().removeAttribute(from);
+                Account to = request.getParameter("account_2");
                 double amount = Double.parseDouble(request.getParameter("amount"));
                 double account_1 = Double.parseDouble(request.getParameter("account_1")); 
                 double account_2 = Double.parseDouble(request.getParameter("account_2"));
                 
-                 if (account_type_1.equals(account_type_2)) {
+                 if (account_type1.equals(account_type_2)) {
                     message = "You cannot transfer money to the same account";
                     url = "/transaction.jsp";
                     } 
@@ -40,36 +42,38 @@ public class TransactionServlet extends HttpServlet {
                  //Run debit and credit methods
                  else {
                      //Determine if first account is checking or savings
-                     if (account_type_1 == Account.AccountType.CHECKING) {
+                     //if (Account.AccountType.CHECKING == Account.getAccountType(account_type1)) {
                          //Run debit method
-                         Account.debit(amount);
+                        // Account.debit(amount);
                      }
                      
-                     else {
+                     //else {
                          //Run debit method
-                         Account.debit(amount);
+                         //Account.debit(amount);
                      }
                      // Determine if second account is 
-                     if (account_type_2 == Account.AccountType.CHECKING) {
+                     //if //(account_type_2 == Account.AccountType.CHECKING) {
                          //Run credit method
-                         Account.credit(amount);
+                         //Account.credit(amount);
                      }
                      
-                     else{
-                         Account.credit(amount);
+                     //else{
+                        // Account.credit(amount);
                      }
-                    /*Transaction transaction = new Transaction(account_1, account_2, amount);*/
-                    message = "";
-                    url = "/transaction.jsp";
-                    }
+                    /*Transaction transaction = new Transaction(account_1, account_2, amount); 
+                    //message = "";
+                    //url = "/transaction.jsp";
+                    //}
                  
-            request.setAttribute("message", message);
+            //request.setAttribute("message", message);
             
-            }
+           // }
             
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
+        
+        */
     }
     
     @Override
@@ -77,5 +81,5 @@ public class TransactionServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
-    }    
+    } //   
 }

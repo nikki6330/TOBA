@@ -11,7 +11,9 @@
             <input type="text" name="password" value="${user.password}" required><br>
             <label>&nbsp;</label>
             <a href="new_customer.jsp" class="margin_left">New User?</a>
-            <a href="password_reset.jsp" class="margin_left">Reset Password</a><br> 
+            <a href="password_reset.jsp" class="margin_left">Reset Password</a><br>
+            <label>&nbsp;</label>
+            <a href="admin/index.html" class="margin_left">Admin</a><br>
             <label>&nbsp;</label>
             <input type="submit" value="Login" class="margin_left">
         </form>
