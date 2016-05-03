@@ -39,7 +39,7 @@
         </table>
         
         <h2>User Table</h2>
-        <p><a href="userData">Return as an XLS file</a></p>
+        <p><a href="userTableSpreadsheet">Return as an XLS file</a></p>
 
 </body>
 </html>

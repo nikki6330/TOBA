@@ -12,7 +12,7 @@ import org.apache.poi.ss.usermodel.*;
 import TOBA.data.ConnectionPool;
 
 
-@WebServlet("/userData")
+@WebServlet("/userTableSpreadsheet")
 public class ReportsServlet extends HttpServlet {
 
     @Override
