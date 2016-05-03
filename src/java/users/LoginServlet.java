@@ -27,9 +27,9 @@ public class LoginServlet extends HttpServlet {
         
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            
+            //User user = UserDB.selectUser(username);         
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
+            User user = (User) session.getAttribute("user");           
             
             // validate the parameters
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
                 message = "";
                 url = "/login_failure.jsp";
             }
+            
             request.setAttribute("message", message);
             
             }

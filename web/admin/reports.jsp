@@ -1,7 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<c:import url="includes/header.html" />
+<html>
+    <head>
+        <title>Admin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/main.css" type="text/css" />
+    </head>
+    <body>
         <h1>Reports</h1>
         <sql:setDataSource
         var="users"
@@ -32,6 +39,7 @@
         </table>
         
         <h2>User Table</h2>
-        <p><a href="userTableSpreadsheet">Return as an XLS file</a></p>
+        <p><a href="userData">Return as an XLS file</a></p>
 
-<c:import url="/includes/footer.jsp" />
+</body>
+</html>
