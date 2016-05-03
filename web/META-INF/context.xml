@@ -11,6 +11,6 @@
 
 <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
         dataSourceName="jdbc/toba" localDataSource="true"
-        userTable="UserPass" userName="Username" userCredCol="Password"
+        userTable="Userpass" userNameCol="Username" userCredCol="Password"
         userRoleTable="UserRole" roleNameCol="Rolename" />
 </Context>

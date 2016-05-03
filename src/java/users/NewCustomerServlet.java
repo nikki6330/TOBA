@@ -8,6 +8,8 @@ import TOBA.business.User;
 import TOBA.data.UserDB;
 import TOBA.business.Account;
 import TOBA.data.AccountDB;
+import TOBA.data.PasswordUtil;
+import java.security.NoSuchAlgorithmException;
 
 public class NewCustomerServlet extends HttpServlet {
 
@@ -33,7 +35,17 @@ public class NewCustomerServlet extends HttpServlet {
             String password = request.getParameter("password");
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            user.setPassword(password);
+            
+            String saltedAndHashedPassword;
+            try {
+                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password);                    
+            
+            } catch (NoSuchAlgorithmException ex) {
+                saltedAndHashedPassword = ex.getMessage();
+            }
+            
+            request.setAttribute("saltedAndHashedPassword", saltedAndHashedPassword);
+            user.setPassword(saltedAndHashedPassword);
             UserDB.update(user);
             session.setAttribute("user", user);
             
