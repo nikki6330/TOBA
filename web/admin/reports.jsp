@@ -6,9 +6,11 @@
         <title>Admin</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/main.css" type="text/css" />
+        <link rel="stylesheet" href="../styles/main.css" type="text/css" />
     </head>
     <body>
+        <img src="admin_image/admin_header.jpg" alt="logo" width ="800">
+        <br>
         <h1>Reports</h1>
         <sql:setDataSource
         var="users"
@@ -39,7 +41,7 @@
         </table>
         
         <h2>User Table</h2>
-        <p><a href="userTableSpreadsheet">Return as an XLS file</a></p>
+        <p><a href="../userTableSpreadsheet">Return as an XLS file</a></p>
 
 </body>
 </html>
