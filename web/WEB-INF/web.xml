@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
    
+    <filter>
+        <filter-name>LogRequestFilter</filter-name>
+        <filter-class>TOBA.filters.LogRequestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogRequestFilter</filter-name>
+        <servlet-name>LoginServlet</servlet-name>
+    </filter-mapping>
+    
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected Area</web-resource-name>
